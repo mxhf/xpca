@@ -16,7 +16,7 @@
 # In[2]:
 
 
-COMMANDLINE = True
+COMMANDLINE = False
 
 
 # In[3]:
