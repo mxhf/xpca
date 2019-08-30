@@ -16,7 +16,7 @@
 # In[2]:
 
 
-COMMANDLINE = False
+COMMANDLINE = True
 
 
 # In[3]:
@@ -420,6 +420,8 @@ if COMMANDLINE:
     parser.add_argument('--shotlist_pca', default="shotlist_pca.txt")
     parser.add_argument('--shotlist_skyrecon', default="shotlist_skyrecon.txt")
     parser.add_argument('--dir_rebin', default="pca_test/rebin")
+    parser.add_argument('--sky_kappa', default=0.8, type=float)
+    parser.add_argument('--ncomp', default=20, type=int)
 
     args = parser.parse_args()
 
@@ -429,6 +431,9 @@ if COMMANDLINE:
     dir_rebin = args.dir_rebin
     amps = args.Aamps
     amps_skysub = [args.Bamp]
+
+    n_components = args.ncomp
+    kappa = args.sky_kappa # for sky outlier clipping
 
 
 # In[229]:
