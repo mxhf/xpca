@@ -228,14 +228,14 @@ def load_skys_for_shotlist(dir_rebin, IFU, shotlist, amps):
             amp_files = OrderedDict()
             for amp in amps:
                 pattern = "{}/{}/{}/multi_???_{}_???_{}_rebin.pickle".format(dir_rebin, shot, e, IFU, amp)
-                #print(pattern)
                 fff = glob.glob(pattern)
                 if len(fff) == 0:
                     print("No file found like {}. Check rebin dir.".format(pattern))
                     continue
                 amp_files[amp] = fff[0]
-        
-            if amp in amp_files.keys() and all( [  amp_files[amp] != '' for amp in amps] ):
+
+            amp_has_data = [  amp in amp_files.keys()  for amp in amps]
+            if all(amp_has_data):
                 for amp in amps:
                     ff[amp] += [amp_files[amp]]
             else:
